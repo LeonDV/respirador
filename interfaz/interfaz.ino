@@ -7,9 +7,9 @@
    Usa una pantalla OLED para visualizar los valores
    Parámetros:
      - Definición de relación I:E  (1:1) (1:2) (1:3) (1:4)
-     - Pulsaciones por minuto de 8 a 30 en saltos de a 2 y en forma cíclica
-     - Volumen de aire dada en porcentaje de compresión del ambu (0% - 100%) en saltos de 5
-     - Umbral de presión para detectar el control de asistencia ¿?
+     - Pulsaciones por minuto de 8 a 40 en pasos de a 2 y en forma cíclica
+     - Volumen de aire (250 - 800 ml) en pasos de 50ml
+     - Umbral de presión máxima 15 - 40cmH20 en pasos de 5cmH20
 
    Distribución de EEPROM
    0 - 9      definición de configuración inicial 1=Configurado 0=nuevo, por configurar
@@ -116,7 +116,6 @@ void setup() {
     grabarEEPROM10(EEconfig, "1");                   //--- Declara el equipo configurado
     Serial.println("Equipo configurado correctamente");
   }
-
   volumen.posActual = leerEEPROM10(EEposVolumen).toInt();
   bpm.posActual = leerEEPROM10(EEposBpm).toInt();
   relacion.posActual = leerEEPROM10(EEposPresMax).toInt();
