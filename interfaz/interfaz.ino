@@ -93,11 +93,11 @@ void setup() {
   Serial.println("Interfaz Usuario Respirador");
   Serial.println("Versión 0.0.1");
   //----- Definición de entradas -----
-  pinMode(pinUp, INPUT_PULLUP);
-  pinMode(pinDown, INPUT_PULLUP);
-  pinMode(paramsUp, INPUT_PULLUP);
-  pinMode(paramsDown, INPUT_PULLUP);
-  pinMode(confirmacion, INPUT_PULLUP);
+  pinMode(pinUp, INPUT);
+  pinMode(pinDown, INPUT);
+  pinMode(paramsUp, INPUT);
+  pinMode(paramsDown, INPUT);
+  pinMode(confirmacion, INPUT);
   //----- Inicializa Display SH1106 I2C 128 X 64 pixeles -----
   setupDisplay();
   //----- Inicializa EEMPROM -----
