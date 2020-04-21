@@ -18,6 +18,7 @@ Adafruit_SH1106 display(OLED_SDA, OLED_SCL);
 //----- Inicializa Display -----
 void setupDisplay() {
   display.begin(SH1106_SWITCHCAPVCC, 0x3C);
+  display.setTextColor(WHITE);
   display.display();
   delay(2000);
   display.clearDisplay();
@@ -33,57 +34,45 @@ void mostrarReal(String v, String b, String i, String p, String c, String corr) 
   display.setFont();
   display.setCursor(0, 5);
   display.setTextSize(1);
-  display.setTextColor(WHITE);
   display.print("VOLUMEN: ");
   display.setCursor(0, 15);
   display.setTextSize(1);
-  display.setTextColor(WHITE);
   display.print("BPM: ");
   display.setCursor(0, 25);
   display.setTextSize(1);
-  display.setTextColor(WHITE);
   display.print("RELACION (I:E): ");
   display.setCursor(0, 35);
   display.setTextSize(1);
-  display.setTextColor(WHITE);
   display.print("PRESION MAXIMA");
   display.setCursor(0, 45);
   display.setTextSize(1);
-  display.setTextColor(WHITE);
   display.print("PRESION ACTUAL");
   display.setCursor(0, 55);
   display.setTextSize(1);
-  display.setTextColor(WHITE);
   display.print("CORRIENTE MOTOR");
   //----- Valores actualizables -----
   display.setCursor(95, 5);
   display.setTextSize(1);
-  display.setTextColor(WHITE);
   display.print(v);
 
   display.setCursor(95, 15);
   display.setTextSize(1);
-  display.setTextColor(WHITE);
   display.print(b);
 
   display.setCursor(95, 25);
   display.setTextSize(1);
-  display.setTextColor(WHITE);
   display.print("1:" + i);
 
   display.setCursor(95, 35);
   display.setTextSize(1);
-  display.setTextColor(WHITE);
   display.print(p);
 
   display.setCursor(95, 45);
   display.setTextSize(1);
-  display.setTextColor(WHITE);
   display.print(c);
 
   display.setCursor(95, 55);
   display.setTextSize(1);
-  display.setTextColor(WHITE);
   display.print(corr + "A");
 
   display.display();
@@ -95,11 +84,9 @@ void mostrarParametroMenu(String param, String value) {
   display.clearDisplay();
   display.setFont(&FreeSans9pt7b);
   display.setCursor(10, 15);
-  display.setTextColor(WHITE);
   display.print(param);
 
   display.setCursor(10, 45);
-  display.setTextColor(WHITE);
   display.print(value);
 
   display.display();
@@ -109,7 +96,6 @@ void mostrarConfirmacion(){
   display.clearDisplay();
   display.setFont(&FreeSans9pt7b);
   display.setCursor(25, 30);
-  display.setTextColor(WHITE);
   display.print("Guardado");
   display.display();
   delay(2000);
