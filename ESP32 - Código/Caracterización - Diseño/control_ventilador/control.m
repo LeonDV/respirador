@@ -1,26 +1,25 @@
 clc; close all;
 
 s = tf('s');
-
-%ret = exp(-0.01*s);
-ret = 1;
-
-Gvel = 0.01328*ret/(0.012*s+1);
+Ref = 30;
+Gain = 27*6/(4095-2400);
+tao = 0.01;
+Gvel = Gain/(tao*s+1);
 Gpos = Gvel/s;
 
-Ts = 4e-3;
+Ts = 7.5e-3;
 
 Gdpos = c2d(Gpos,Ts);
 
-% sisotool(Gdpos)
+sisotool(Gdpos)
 
 z = tf('z',Ts);
 
-%K = 5000*(z-0.7165)*(z-0.9)/(z*(z-1));
-K = 2000;
-lim = 4095 - 1420;
+K = 2000*(z-0.7165)*(z-0.9)/(z*(z-1));
+%K = 2000;
+lim = 4095 - 2400;
 t = 0:Ts:0.3;
-ref = 30/0.3*t;
+ref = Ref/0.3*t;
 y = lsim(feedback(Gdpos*K,1),ref,t);
 e = (ref' - y);
 u = K*e;

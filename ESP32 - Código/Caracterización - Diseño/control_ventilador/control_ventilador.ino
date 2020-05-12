@@ -32,7 +32,7 @@ float velMotor = 0;
 
 // Parametros ventilador
 const float posInicial = 180;
-const float posFinal = 240;
+const float posFinal = 195;
 const int t1 = 1000; // Tiempos en milisegundos
 const int t2 = 150;
 const int t3 = 1850;
@@ -142,16 +142,16 @@ void loop() {
       error = ref - posMotor;
            
       //pwm = 3695/50*abs(error) + 400;
-      pwm  = 3000*abs(error) + 1420; 
+      pwm  = 2000*abs(error); 
 
-      if (pwm > 4095){
-        pwm = 4095;
+      if (pwm > 4095-2400){
+        pwm = 4095-2400;
       }
 
       if (error > 0.1){
-        rotateLeft(pwm);
+        rotateLeft(pwm + 2400);
       }else if (error < -0.1){            
-        rotateRight(pwm);
+        rotateRight(pwm + 2400);
       }else{
         stopMotor();
       }
@@ -215,13 +215,13 @@ void stopMotor(){ // Parar
 
 // Graficar
 void grafSerial(){
-  Serial.print("Ts = ");
-  Serial.print(t-t0);
-  Serial.print(" [us]");
-  Serial.print("\t");
-  Serial.print("PWM = ");
-  Serial.print(pwm);
-  Serial.print("\t");
+//  Serial.print("Ts = ");
+//  Serial.print(t-t0);
+//  Serial.print(" [us]");
+//  Serial.print("\t");
+//  Serial.print("PWM = ");
+//  Serial.print(pwm);
+//  Serial.print("\t");
   Serial.print("Vel = ");
   Serial.print(-velDir*velMotor);
   Serial.print(" [rpm]");
